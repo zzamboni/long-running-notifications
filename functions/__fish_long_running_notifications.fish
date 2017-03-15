@@ -6,7 +6,7 @@ function __fish_long_running_notifications -d "Produce a notification if a comma
 		if test $CMD_DURATION -ge $LONG_RUNNING_NOTIFICATION_TIME
 			test $cmd_status -eq 0; and set -l message "Success (status $cmd_status)"
 			test $cmd_status -ne 0; and set -l message "Exit code $cmd_status"
-			terminal-notifier -title "Command done: $message" -message "Command finished: '$argv[1]'" -group long-running-notifications -activate com.apple.Terminal > /dev/null
+			fish_gui_notify --title "Command done: $message" --message "Command finished: '$argv[1]'" --group long-running-notifications --app com.apple.Terminal
 		end
 	end
 end
